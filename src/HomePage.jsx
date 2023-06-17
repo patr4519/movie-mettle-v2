@@ -12,7 +12,7 @@ const bestFilms = [
 
 export const HomePage = () => {
   const [showMovies, setShowMovies] = React.useState(true);
-  const [movie, setMovie] = React.useState('')
+  const [movie, setMovie] = React.useState("");
   const [inputValue, setInputValue] = React.useState("");
 
   const handleInputChange = (event) => {
@@ -22,7 +22,7 @@ export const HomePage = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     setShowMovies(false);
-    setMovie(inputValue)
+    setMovie(inputValue);
   };
 
   return (

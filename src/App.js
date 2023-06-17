@@ -4,6 +4,7 @@ import React from "react";
 import Header from "./features/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage } from "./HomePage";
+import { Film } from "./features/Film";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route exact path="/" element={<HomePage />} />
             <Route path="/favorites" element={<div>favorites</div>} />
             <Route path="/forum" element={<div>forum</div>} />
+            <Route path="/movie/:movieTitle" element={<Film />} />
           </Routes>
         </div>
       </div>
