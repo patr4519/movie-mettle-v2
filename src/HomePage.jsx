@@ -1,5 +1,4 @@
 import React from "react";
-import MovieSearch from "./MovieSearch";
 import { Film } from "./features/Film";
 
 const bestFilms = [
@@ -12,14 +11,41 @@ const bestFilms = [
 ];
 
 export const HomePage = () => {
+  const [showMovies, setShowMovies] = React.useState(true);
+  const [movie, setMovie] = React.useState('')
+  const [inputValue, setInputValue] = React.useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    setShowMovies(false);
+    setMovie(inputValue)
+  };
 
   return (
     <>
-      <MovieSearch />
+      <div className="input-wrapper">
+        <form className="input-search" onSubmit={handleFormSubmit}>
+          <input
+            placeholder="Input film"
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
       <div className="movie-list">
-        {bestFilms.map((title, index) => {
-          return <Film key={index} title={title} />;
-        })}
+        {showMovies ? (
+          bestFilms.map((title, index) => {
+            return <Film key={index} title={title} />;
+          })
+        ) : (
+          <Film title={movie} />
+        )}
       </div>
     </>
   );
