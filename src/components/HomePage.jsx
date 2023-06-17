@@ -1,5 +1,5 @@
 import React from "react";
-import { Film } from "./features/Film";
+import { Film } from "./Film";
 import { Button } from "@mui/material";
 
 const bestFilms = [

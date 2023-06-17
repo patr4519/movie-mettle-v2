@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useGetFilmQuery } from "./api/apiSlice";
+import { useGetFilmQuery } from "../features/api/apiSlice";
 import { useParams } from "react-router-dom";
 
 export const Film = ({ title }) => {
