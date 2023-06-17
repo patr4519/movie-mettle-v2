@@ -46,6 +46,7 @@ function App() {
               }
             />
             <Route path="/favorites" element={<div>favorites</div>} />
+            <Route path="/forum" element={<div>forum</div>} />
           </Routes>
         </div>
       </div>
