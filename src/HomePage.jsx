@@ -2,19 +2,16 @@ import React from "react";
 import MovieSearch from "./MovieSearch";
 import { Film } from "./features/Film";
 
+const bestFilms = [
+  "The Godfather",
+  "The Godfather",
+  "The Godfather",
+  "The Godfather",
+  "The Godfather",
+  "The Godfather",
+];
+
 export const HomePage = () => {
-  const bestFilms = [
-    "The Godfather",
-    "The Dark Knight",
-    "Fight Club",
-    "The Godfather",
-    "The Dark Knight",
-    "Fight Club",
-    "The Godfather",
-    "The Dark Knight",
-    "Fight Club",
-    "The Godfather",
-  ];
 
   return (
     <>
