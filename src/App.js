@@ -1,50 +1,18 @@
 // `http://www.omdbapi.com/?t=q&apikey=9fc0fef8`
 
 import React from "react";
-import MovieSearch from "./MovieSearch";
-import { Film } from "./features/Film";
 import Header from "./features/Header";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HomePage } from "./HomePage";
 
 function App() {
-  const bestFilms = [
-    "The Godfather",
-    "The Dark Knight",
-    "Fight Club",
-    "The Godfather",
-    "The Dark Knight",
-    "Fight Club",
-    "The Godfather",
-    "The Dark Knight",
-    "Fight Club",
-    "The Godfather",
-  ];
-
   return (
     <Router>
       <div className="wrapper-app">
         <div className="app">
           <Header />
           <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <>
-                  <MovieSearch />
-                  <div className="movie-list">
-                    {bestFilms.map((title, index) => {
-                      return <Film key={index} title={title} />;
-                    })}
-                  </div>
-                </>
-              }
-            />
+            <Route exact path="/" element={<HomePage />} />
             <Route path="/favorites" element={<div>favorites</div>} />
             <Route path="/forum" element={<div>forum</div>} />
           </Routes>

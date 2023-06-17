@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
-const pages = ["Favorites", "Forum"];
+const pages = ["favorites", "forum"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Header() {
@@ -47,7 +47,7 @@ function Header() {
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              marginRight: '20px',
               display: { xs: "none", md: "flex" },
               color: "inherit",
               textDecoration: "none",
