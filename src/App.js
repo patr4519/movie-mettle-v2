@@ -17,6 +17,7 @@ function App() {
             <Route path="/favorites" element={<div>favorites</div>} />
             <Route path="/forum" element={<div>forum</div>} />
             <Route path="/movie/:movieTitle" element={<Film />} />
+            <Route path="*" element={<div>No such page</div>} />
           </Routes>
         </div>
       </div>

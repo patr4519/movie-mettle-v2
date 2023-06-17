@@ -1,9 +1,10 @@
 import React from "react";
 import { Film } from "./features/Film";
+import { Button } from "@mui/material";
 
 const bestFilms = [
   "The Godfather",
-  "The Godfather",
+  "The Mummy",
   "The Godfather",
   "The Godfather",
   "The Godfather",
@@ -23,6 +24,7 @@ export const HomePage = () => {
     event.preventDefault();
     setShowMovies(false);
     setMovie(inputValue);
+    setInputValue("");
   };
 
   return (
@@ -45,6 +47,9 @@ export const HomePage = () => {
           })
         ) : (
           <Film title={movie} />
+        )}
+        {!showMovies && (
+          <Button onClick={() => setShowMovies(true)}>back</Button>
         )}
       </div>
     </>

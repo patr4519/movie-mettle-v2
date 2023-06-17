@@ -10,6 +10,7 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     getFilm: builder.query({
       query: (title) => `/?t=${title}&apikey=9fc0fef8`,
+      // keepUnusedDataFor: 60, 60 seconds by default
     }),
   }),
 });

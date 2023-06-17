@@ -40,21 +40,20 @@ function Header() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              marginRight: '20px',
-              display: { xs: "none", md: "flex" },
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Movie Mettle
-          </Typography>
+          <Link to='/' className="home-link">
+            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            <Typography
+              variant="h6"
+              sx={{
+                marginRight: "27px",
+                display: { xs: "none", md: "flex" },
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              MovieMettle
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
