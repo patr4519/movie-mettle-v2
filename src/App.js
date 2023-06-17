@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// `http://www.omdbapi.com/?t=q&apikey=9fc0fef8`
+
+import React from "react";
+import MovieSearch from "./MovieSearch";
+import { Film } from "./features/Film";
+import Header from "./features/Header";
 
 function App() {
+  const bestFilms = ["The Godfather", "The Dark Knight", "Fight Club", "The Godfather", "The Dark Knight", "Fight Club", "The Godfather", "The Dark Knight", "Fight Club", "The Godfather"];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper-app">
+      <div className="app">
+        <Header />
+        <MovieSearch />
+        <div className="movie-list">
+          {bestFilms.map((title, index) => {
+            return <Film key={index} title={title} />;
+          })}
+        </div>
+      </div>
     </div>
   );
 }
