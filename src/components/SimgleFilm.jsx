@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetFilmQuery } from "../features/api/apiSlice";
 import { useParams } from "react-router-dom";
+import { Button } from "@mui/material";
 
 export const SingleFilm = () => {
   const { movieTitle } = useParams();
@@ -14,6 +15,7 @@ export const SingleFilm = () => {
       <div className="single-movie">
         <div className="left-block">
           <img src={film.Poster} alt="poster" width={"100%"} />
+          <Button sx={{width: '150px', background: '#dfe4f4', marginTop: '5px'}}>Add to favorite</Button>
         </div>
         <div className="right-block">
           <div className="movie-title">
