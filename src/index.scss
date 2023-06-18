@@ -26,6 +26,17 @@ a {
   }
 }
 
+.link-favorite {
+  position: relative;
+
+  .fav-count {
+    font-family: 'Arbutus Slab';
+    position: absolute;
+    top: 11px;
+    right: 5px;
+  }
+}
+
 .wrapper-app {
   margin: auto;
   width: 800px;

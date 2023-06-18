@@ -13,6 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectFavorites } from "../features/api/favoritesSlice";
 
 const pages = ["favorites", "forum"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -36,11 +38,13 @@ function Header() {
     setAnchorElUser(null);
   };
 
+  const favCount = useSelector(selectFavorites).length;
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link to='/' className="home-link">
+          <Link to="/" className="home-link">
             <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             <Typography
               variant="h6"
@@ -49,7 +53,7 @@ function Header() {
                 display: { xs: "none", md: "flex" },
                 color: "inherit",
                 textDecoration: "none",
-                fontFamily: 'Arbutus Slab'
+                fontFamily: "Arbutus Slab",
               }}
             >
               MovieMettle
@@ -114,18 +118,33 @@ function Header() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Link key={page} to={`/${page}`}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" , fontFamily: 'Arbutus Slab'}}
-                >
-                  {page}
-                </Button>
-              </Link>
-            ))}
+            <Link className="link-favorite" to={`/favorites`}>
+              <Button
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  fontFamily: "Arbutus Slab",
+                  marginRight: "5px",
+                }}
+              >
+                Favorites
+              </Button>
+              <span className="fav-count">{favCount > 0 ? favCount : ""}</span>
+            </Link>
+            <Link to={`/forum`}>
+              <Button
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  fontFamily: "Arbutus Slab",
+                }}
+              >
+                Forum
+              </Button>
+            </Link>
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -150,7 +169,12 @@ function Header() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{fontFamily: "Arbutus Slab"}} textAlign="center">{setting}</Typography>
+                  <Typography
+                    sx={{ fontFamily: "Arbutus Slab" }}
+                    textAlign="center"
+                  >
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>

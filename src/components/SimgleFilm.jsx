@@ -2,9 +2,13 @@ import React from "react";
 import { useGetFilmQuery } from "../features/api/apiSlice";
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
+import { addFav, selectFavorites } from "../features/api/favoritesSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export const SingleFilm = () => {
   const { movieTitle } = useParams();
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
 
   const { data: film, isLoading } = useGetFilmQuery(movieTitle);
 
@@ -15,7 +19,7 @@ export const SingleFilm = () => {
       <div className="single-movie">
         <div className="left-block">
           <img src={film.Poster} alt="poster" width={"100%"} />
-          <Button sx={{width: '150px', background: '#dfe4f4', marginTop: '5px'}}>Add to favorite</Button>
+          <Button onClick={() => dispatch(addFav(film))} sx={{width: '150px', background: '#dfe4f4', marginTop: '5px'}}>Add to favorite</Button>
         </div>
         <div className="right-block">
           <div className="movie-title">

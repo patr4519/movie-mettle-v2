@@ -7,7 +7,7 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFav: (state, action) => {
-      state.items.push(action.payload);
+      state.push(action.payload);
     },
   },
 });

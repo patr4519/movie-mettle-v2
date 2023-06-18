@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage } from "./components/HomePage";
 import { SingleFilm } from "./components/SimgleFilm";
+import { Favorites } from "./components/Favorites";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route path="/movie/:movieTitle" element={<SingleFilm />} />
-            <Route path="/favorites" element={<div>favorites</div>} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/forum" element={<div>forum</div>} />
             <Route path="*" element={<div>No such page</div>} />
           </Routes>
