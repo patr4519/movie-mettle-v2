@@ -34,10 +34,6 @@ export const SingleFilm = () => {
               <div>{film.Genre}</div>
             </div>
             <div className="movie-row">
-              <div>Language</div>
-              <div>{film.Language}</div>
-            </div>
-            <div className="movie-row">
               <div>Writer</div>
               <div>{film.Writer}</div>
             </div>
