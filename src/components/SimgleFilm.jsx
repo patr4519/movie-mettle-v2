@@ -22,7 +22,7 @@ export const SingleFilm = () => {
           <div className="movie-info">
             <div className="movie-about">About film</div>
             <div className="movie-row">
-              <div>Released:</div>
+              <div>Released</div>
               <div>{film.Released}</div>
             </div>
             <div className="movie-row">

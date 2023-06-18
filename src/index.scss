@@ -3,7 +3,7 @@ body {
   font-family: Rubik;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Georgia';
+  font-family: 'Arbutus Slab', 'Georgia';
 }
 
 * {
@@ -100,6 +100,7 @@ a {
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
     box-shadow: 0 0 10px rgba(15, 1, 1, 0.815);
+    font-size: 15px;
 
     .poster-link {
       img {

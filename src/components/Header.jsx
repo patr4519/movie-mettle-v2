@@ -45,10 +45,11 @@ function Header() {
             <Typography
               variant="h6"
               sx={{
-                marginRight: "27px",
+                marginRight: "12px",
                 display: { xs: "none", md: "flex" },
                 color: "inherit",
                 textDecoration: "none",
+                fontFamily: 'Arbutus Slab'
               }}
             >
               MovieMettle
@@ -117,7 +118,7 @@ function Header() {
               <Link key={page} to={`/${page}`}>
                 <Button
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{ my: 2, color: "white", display: "block" , fontFamily: 'Arbutus Slab'}}
                 >
                   {page}
                 </Button>
@@ -149,7 +150,7 @@ function Header() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography sx={{fontFamily: "Arbutus Slab"}} textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
