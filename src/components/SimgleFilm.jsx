@@ -5,7 +5,9 @@ import { useParams } from "react-router-dom";
 export const SingleFilm = () => {
   const { movieTitle } = useParams();
 
-  const { data: film } = useGetFilmQuery(movieTitle);
+  const { data: film, isLoading } = useGetFilmQuery(movieTitle);
+
+  if (isLoading) return <p>Loading...</p>
 
   return (
     <div className="movie-item">
