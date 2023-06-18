@@ -123,3 +123,63 @@ a {
     }
   }
 }
+
+.single-movie-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .single-movie {
+    display: flex;
+    width: 750px;
+    box-shadow: 0 0 10px rgba(15, 1, 1, 0.815);
+
+    .left-block {
+      background-color: rgb(224, 135, 135);
+      width: 30%;
+      height: 700px;
+    }
+
+    .right-block {
+      background-color: rgb(145, 143, 143);
+      width: 70%;
+      height: 700px;
+      padding: 10px;
+
+      .movie-title {
+        font-size: 28px;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .movie-info {
+        background-color: #8eaed1;
+
+        .movie-about {
+          font-size: 22px;
+        }
+
+        .movie-row {
+          display: flex;
+          margin: 10px 0;
+
+          div:first-child {
+            flex-basis: 30%;
+            background-color: #eb9066;
+          }
+
+          div:last-child {
+            flex-basis: 70%;
+            background-color: #e2dfc0;
+          }
+        }
+
+        .movie-plot {
+          p {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+}
