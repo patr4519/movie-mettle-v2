@@ -17,7 +17,6 @@ import { useSelector } from "react-redux";
 import { selectFavorites } from "../features/api/favoritesSlice";
 
 const pages = ["favorites", "forum"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -167,16 +166,32 @@ function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Link to='/profile'>
                   <Typography
                     sx={{ fontFamily: "Arbutus Slab" }}
                     textAlign="center"
                   >
-                    {setting}
+                    Profile
                   </Typography>
-                </MenuItem>
-              ))}
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography
+                  sx={{ fontFamily: "Arbutus Slab" }}
+                  textAlign="center"
+                >
+                  Settings
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography
+                  sx={{ fontFamily: "Arbutus Slab" }}
+                  textAlign="center"
+                >
+                  Logout
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
