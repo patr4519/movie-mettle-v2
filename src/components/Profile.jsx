@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
-import { useGetUsersQuery } from '../features/api/apiUserSlice';
+import React, { useState } from "react";
+import axios from "axios";
 
 const Profile = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoggedIn(true);
+
+    try {
+      const { data } = await axios.post(
+        "https://63dbfd55c45e08a04352c66d.mockapi.io/users",
+        {
+          login: username,
+          password: password,
+          created: Date.now(),
+          favorites: [],
+        }
+      );
+      alert(`${username} was created!`);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setUsername("");
+      setPassword("");
+    }
   };
-
-  const {data, error, isLoading} = useGetUsersQuery();
-
-  console.log(data);
 
   return (
     <div className="profile">
@@ -22,7 +35,7 @@ const Profile = () => {
           <h1>Welcome, {username}!</h1>
         </div>
       ) : (
-        <form className="login-form" onSubmit={handleLogin}>
+        <form className="login-form" onSubmit={handleSubmit}>
           <h1>Sign Up</h1>
           <input
             type="text"
