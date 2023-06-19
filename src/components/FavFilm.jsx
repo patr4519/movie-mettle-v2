@@ -4,6 +4,8 @@ import { useGetFilmQuery } from "../features/api/apiSlice";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeFav } from "../features/api/favoritesSlice";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
 
 export const FavFilm = ({ title }) => {
   const dispatch = useDispatch();
@@ -40,7 +42,12 @@ export const FavFilm = ({ title }) => {
             <div className="country">{data.Country}</div>
             <div className="director">{data.Director}</div>
           </div>
-          <button onClick={() => dispatch(removeFav(data.Title))} className="remove-btn">Remove</button>
+          <IconButton
+            onClick={() => dispatch(removeFav(data.Title))}
+            aria-label="delete"
+          >
+            <DeleteIcon className="remove-btn" />
+          </IconButton>
         </div>
       )}
     </div>
