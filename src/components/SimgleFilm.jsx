@@ -10,8 +10,12 @@ export const SingleFilm = () => {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
 
-  const { data: film, isLoading } = useGetFilmQuery(movieTitle);
+  let isFavorite;
+  if (favorites.some((movie) => movie.Title === movieTitle)) {
+    isFavorite = true;
+  }
 
+  const { data: film, isLoading } = useGetFilmQuery(movieTitle);
   if (isLoading) return <p>Loading...</p>;
 
   return (
@@ -19,7 +23,16 @@ export const SingleFilm = () => {
       <div className="single-movie">
         <div className="left-block">
           <img src={film.Poster} alt="poster" width={"100%"} />
-          <Button onClick={() => dispatch(addFav(film))} sx={{width: '150px', background: '#dfe4f4', marginTop: '5px'}}>Add to favorite</Button>
+          {!isFavorite ? (
+            <Button
+              onClick={() => dispatch(addFav(film))}
+              sx={{ width: "150px", background: "#dfe4f4", marginTop: "5px" }}
+            >
+              Add to favorite
+            </Button>
+          ) : (
+            <div className="your-fav">Your Favorite</div>
+          )}
         </div>
         <div className="right-block">
           <div className="movie-title">
@@ -60,7 +73,7 @@ export const SingleFilm = () => {
               <div>{film.Rated}</div>
             </div>
             <div className="movie-plot">
-              <p>Plot:</p> 
+              <p>Plot:</p>
               {film.Plot}
             </div>
           </div>
