@@ -132,6 +132,35 @@ a {
   }
 }
 
+.fav-item {
+  .content {
+    display: flex;
+    width: 400px;
+    margin: 5px 0px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    box-shadow: 0 2px 5px rgba(10, 1, 1, 0.815);
+    font-size: 15px;
+
+    .poster-link {
+      img {
+        height: 100%;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.7;
+          transition: opacity 0.3s ease;
+        }
+      }
+    }
+
+    .details {
+      width: 100%;
+      padding: 5px;
+    }
+  }
+}
+
 .single-movie-wrapper {
   display: flex;
   justify-content: center;

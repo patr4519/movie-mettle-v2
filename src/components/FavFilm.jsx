@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useGetFilmQuery } from "../features/api/apiSlice";
 import { useParams } from "react-router-dom";
 
-export const Film = ({ title }) => {
+export const FavFilm = ({ title }) => {
   const { movieTitle } = useParams();
 
   const film = movieTitle ? movieTitle : title;
