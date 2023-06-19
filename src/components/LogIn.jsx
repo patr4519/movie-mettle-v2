@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../features/api/userSlice";
 
 export const LogIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +23,7 @@ export const LogIn = () => {
         if (data[i].login === username && data[i].password === password) {
           console.log("User found!");
           user = data[i];
+          dispatch(addUser(user));
           return;
         }
       }
