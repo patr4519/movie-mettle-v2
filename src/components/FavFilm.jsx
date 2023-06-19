@@ -2,8 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useGetFilmQuery } from "../features/api/apiSlice";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeFav } from "../features/api/favoritesSlice";
 
 export const FavFilm = ({ title }) => {
+  const dispatch = useDispatch();
+
   const { movieTitle } = useParams();
 
   const film = movieTitle ? movieTitle : title;
@@ -36,6 +40,7 @@ export const FavFilm = ({ title }) => {
             <div className="country">{data.Country}</div>
             <div className="director">{data.Director}</div>
           </div>
+          <button onClick={() => dispatch(removeFav(data.Title))} className="remove-btn">Remove</button>
         </div>
       )}
     </div>

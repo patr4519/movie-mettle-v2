@@ -30,7 +30,7 @@ a {
   position: relative;
 
   .fav-count {
-    font-family: 'Arbutus Slab';
+    font-family: "Arbutus Slab";
     position: absolute;
     top: 11px;
     right: 5px;
@@ -141,6 +141,7 @@ a {
     border-bottom-right-radius: 7px;
     box-shadow: 0 2px 5px rgba(10, 1, 1, 0.815);
     font-size: 15px;
+    position: relative;
 
     .poster-link {
       img {
@@ -157,6 +158,12 @@ a {
     .details {
       width: 100%;
       padding: 5px;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 }
