@@ -43,6 +43,7 @@ export const FavFilm = ({ title }) => {
             <div className="director">{data.Director}</div>
           </div>
           <IconButton
+            sx={{ height: "30px", width: '30px' }}
             onClick={() => dispatch(removeFav(data.Title))}
             aria-label="delete"
           >
