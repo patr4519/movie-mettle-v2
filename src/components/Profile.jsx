@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useGetUsersQuery } from '../features/api/apiUserSlice';
 
 const Profile = () => {
   const [username, setUsername] = useState('');
@@ -9,6 +10,10 @@ const Profile = () => {
     e.preventDefault();
     setIsLoggedIn(true);
   };
+
+  const {data, error, isLoading} = useGetUsersQuery();
+
+  console.log(data);
 
   return (
     <div className="profile">
