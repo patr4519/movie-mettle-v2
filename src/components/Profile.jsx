@@ -18,7 +18,7 @@ const Profile = () => {
         </div>
       ) : (
         <form className="login-form" onSubmit={handleLogin}>
-          <h1>Login</h1>
+          <h1>Sign Up</h1>
           <input
             type="text"
             placeholder="Username"
@@ -31,7 +31,7 @@ const Profile = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Log In</button>
+          <button type="submit">Create</button>
         </form>
       )}
     </div>
