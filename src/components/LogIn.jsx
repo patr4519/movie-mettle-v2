@@ -21,7 +21,6 @@ export const LogIn = () => {
 
       for (let i = 0; i < data.length; i++) {
         if (data[i].login === username && data[i].password === password) {
-          console.log("User found!");
           user = data[i];
           dispatch(addUser(user));
           return;

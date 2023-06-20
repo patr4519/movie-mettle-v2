@@ -1,7 +1,12 @@
+import { Button } from '@mui/material';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { clearUser } from '../features/api/userSlice';
 
 const UserProfile = ({ user }) => {
   const { id, login, created, favorites } = user;
+
+  const dispatch = useDispatch();
 
   return (
     <div className="user-profile">
@@ -24,6 +29,7 @@ const UserProfile = ({ user }) => {
           <span className="value">{favorites.length}</span>
         </div>
       </div>
+      <Button onClick={() => dispatch(clearUser())}>Log Out</Button>
     </div>
   );
 };

@@ -15,6 +15,8 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectFavorites } from "../features/api/favoritesSlice";
+import avatar from '../assets/avatar.png'
+import { selectUser } from "../features/api/userSlice";
 
 const pages = ["favorites", "forum"];
 
@@ -38,6 +40,7 @@ function Header() {
   };
 
   const favCount = useSelector(selectFavorites).length;
+  const user = useSelector(selectUser);
 
   return (
     <AppBar position="static">
@@ -114,7 +117,7 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            MM
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Link className="link-favorite" to={`/favorites`}>
@@ -147,7 +150,7 @@ function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src={user ? avatar : ''} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -167,7 +170,7 @@ function Header() {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Link to='/profile'>
+                <Link to="/profile">
                   <Typography
                     sx={{ fontFamily: "Arbutus Slab" }}
                     textAlign="center"
