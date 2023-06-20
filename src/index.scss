@@ -301,3 +301,27 @@ a {
   }
 }
 
+.user-profile {
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .profile-details {
+    .detail {
+      margin-bottom: 5px;
+
+      .label {
+        font-weight: bold;
+      }
+
+      .value {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
