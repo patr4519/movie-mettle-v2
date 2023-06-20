@@ -8,13 +8,18 @@ import { useEditUserFavMutation } from "../features/api/apiUserSlice";
 
 export const SingleFilm = () => {
   const { movieTitle } = useParams();
-  
-  let user = useSelector(selectUser); // исходим из того, что пользователь авторизован
+
+  let user = useSelector(selectUser);
   const dispatch = useDispatch();
 
-  const [ updateFav ] = useEditUserFavMutation();
+  const [updateFav] = useEditUserFavMutation();
 
   const handleAddBtn = async () => {
+    if (!user) {
+      alert("Sign in first");
+      return;
+    }
+
     try {
       const done = await updateFav({
         ...user,
@@ -29,6 +34,7 @@ export const SingleFilm = () => {
   };
 
   const { data: film, isLoading } = useGetFilmQuery(movieTitle);
+
   if (isLoading) return <p>Loading...</p>;
 
   return (
