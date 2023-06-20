@@ -7,11 +7,10 @@ import { addFavorite, selectUser } from "../features/api/userSlice";
 import { useEditUserFavMutation } from "../features/api/apiUserSlice";
 
 export const SingleFilm = () => {
-  const { movieTitle } = useParams();
-
-  let user = useSelector(selectUser);
   const dispatch = useDispatch();
-
+  const { movieTitle } = useParams();
+  const { data: film, isLoading } = useGetFilmQuery(movieTitle);
+  let user = useSelector(selectUser);
   const [updateFav] = useEditUserFavMutation();
 
   const handleAddBtn = async () => {
@@ -33,7 +32,10 @@ export const SingleFilm = () => {
     }
   };
 
-  const { data: film, isLoading } = useGetFilmQuery(movieTitle);
+  let isFavorite;
+  if (user && user.favorites.includes(movieTitle)) {
+    isFavorite = true;
+  }
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -42,7 +44,7 @@ export const SingleFilm = () => {
       <div className="single-movie">
         <div className="left-block">
           <img src={film.Poster} alt="poster" width={"100%"} />
-          <Button onClick={handleAddBtn}>Add to favorite</Button>
+          {isFavorite ? <div>In your favorite</div> : <Button onClick={handleAddBtn}>Add to favorite</Button>}
         </div>
         <div className="right-block">
           <div className="movie-title">
