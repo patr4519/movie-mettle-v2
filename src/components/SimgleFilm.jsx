@@ -2,18 +2,31 @@ import React from "react";
 import { useGetFilmQuery } from "../features/api/apiSlice";
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
-import { addFav, selectFavorites } from "../features/api/favoritesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, selectUser } from "../features/api/userSlice";
+import { useEditUserFavMutation } from "../features/api/apiUserSlice";
 
 export const SingleFilm = () => {
   const { movieTitle } = useParams();
+  
+  let user = useSelector(selectUser); // исходим из того, что пользователь авторизован
   const dispatch = useDispatch();
-  const favorites = useSelector(selectFavorites);
 
-  let isFavorite;
-  if (favorites.some((movie) => movie.Title === movieTitle)) {
-    isFavorite = true;
-  }
+  const [ updateFav ] = useEditUserFavMutation();
+
+  const handleAddBtn = async () => {
+    try {
+      const done = await updateFav({
+        ...user,
+        favorites: [...user.favorites, movieTitle],
+      });
+      if (done) {
+        dispatch(addFavorite(movieTitle));
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   const { data: film, isLoading } = useGetFilmQuery(movieTitle);
   if (isLoading) return <p>Loading...</p>;
@@ -23,16 +36,7 @@ export const SingleFilm = () => {
       <div className="single-movie">
         <div className="left-block">
           <img src={film.Poster} alt="poster" width={"100%"} />
-          {!isFavorite ? (
-            <Button
-              onClick={() => dispatch(addFav(film))}
-              sx={{ width: "150px", background: "#dfe4f4", marginTop: "5px" }}
-            >
-              Add to favorite
-            </Button>
-          ) : (
-            <div className="your-fav">Your Favorite</div>
-          )}
+          <Button onClick={handleAddBtn}>Add to favorite</Button>
         </div>
         <div className="right-block">
           <div className="movie-title">

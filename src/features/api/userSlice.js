@@ -9,6 +9,9 @@ const userSlice = createSlice({
     addUser: (state, action) => {
       state.push(action.payload);
     },
+    addFavorite: (state, action) => {
+      state[0].favorites.push(action.payload)
+    },
     clearUser: () => {
       return initialState;
     },
@@ -17,6 +20,6 @@ const userSlice = createSlice({
 
 export const selectUser = (state) => state.user[0];
 
-export const { addUser, clearUser } = userSlice.actions;
+export const { addUser, clearUser, addFavorite } = userSlice.actions;
 
 export default userSlice.reducer;

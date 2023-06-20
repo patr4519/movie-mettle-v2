@@ -11,7 +11,14 @@ export const apiUserSlice = createApi({
     getUsers: builder.query({
       query: () => `/users`,
     }),
+    editUserFav: builder.mutation({
+      query: (user) => ({
+        url: `/users/${user.id}`,
+        method: 'PUT',
+        body: user
+      })
+    })
   }),
 });
 
-export const { useGetUsersQuery } = apiUserSlice;
+export const { useGetUsersQuery, useEditUserFavMutation } = apiUserSlice;
