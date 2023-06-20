@@ -14,8 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectFavorites } from "../features/api/favoritesSlice";
-import avatar from '../assets/avatar.png'
+import avatar from "../assets/avatar.png";
 import { selectUser } from "../features/api/userSlice";
 
 const pages = ["favorites", "forum"];
@@ -39,8 +38,8 @@ function Header() {
     setAnchorElUser(null);
   };
 
-  const favCount = useSelector(selectFavorites).length;
   const user = useSelector(selectUser);
+  const favCount = useSelector(selectUser)?.favorites;
 
   return (
     <AppBar position="static">
@@ -132,7 +131,7 @@ function Header() {
               >
                 Favorites
               </Button>
-              <span className="fav-count">{favCount > 0 ? favCount : ""}</span>
+              <span className="fav-count">{favCount?.length > 0 ? favCount.length : ""}</span>
             </Link>
             <Link to={`/forum`}>
               <Button
@@ -150,7 +149,7 @@ function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={user ? avatar : ''} />
+                <Avatar alt="Remy Sharp" src={user ? avatar : ""} />
               </IconButton>
             </Tooltip>
             <Menu
