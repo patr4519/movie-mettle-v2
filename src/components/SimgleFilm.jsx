@@ -4,14 +4,19 @@ import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, selectUser } from "../features/api/userSlice";
-import { useEditUserFavMutation, useGetUsersQuery } from "../features/api/apiUserSlice";
+import {
+  useEditUserFavMutation,
+  useGetUsersQuery,
+} from "../features/api/apiUserSlice";
 
 export const SingleFilm = () => {
+  let user = useSelector(selectUser);
   const dispatch = useDispatch();
   const { movieTitle } = useParams();
   const { data: film, isLoading } = useGetFilmQuery(movieTitle);
-  let user = useSelector(selectUser);
   const [updateFav] = useEditUserFavMutation();
+
+  const [saving, setSaving] = React.useState(false);
 
   const handleAddBtn = async () => {
     if (!user) {
@@ -20,6 +25,7 @@ export const SingleFilm = () => {
     }
 
     try {
+      setSaving(true);
       const done = await updateFav({
         ...user,
         favorites: [...user.favorites, movieTitle],
@@ -29,6 +35,8 @@ export const SingleFilm = () => {
       }
     } catch (error) {
       alert(error);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -44,7 +52,13 @@ export const SingleFilm = () => {
       <div className="single-movie">
         <div className="left-block">
           <img src={film.Poster} alt="poster" width={"100%"} />
-          {isFavorite ? <div className="favorite-container">In your favorites</div> : <Button onClick={handleAddBtn}>Add to favorite</Button>}
+          {isFavorite ? (
+            <div className="favorite-container">In your favorites</div>
+          ) : (
+            <Button disabled={saving} onClick={handleAddBtn}>
+              Add to favorite
+            </Button>
+          )}
         </div>
         <div className="right-block">
           <div className="movie-title">
