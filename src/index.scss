@@ -290,10 +290,17 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 180px;
+    height: 200px;
+    width: 300px;
+    border: 1px solid #c1c2c2;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #eaeef2;
 
     h1 {
-      margin-bottom: 1rem;
+      margin: 5px 0;
+      font-size: 24px;
+      font-weight: 500;
     }
 
     input {
@@ -301,11 +308,13 @@ a {
       padding: 0.5rem;
       margin-bottom: 0.5rem;
       border-radius: 5px;
-      border: 1px solid black;
+      border: 1px solid #aaa9a9;
     }
 
     button {
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.8rem;
+      width: 150px;
+      font-weight: bold;
       background-color: #007bff;
       color: #fff;
       border: none;

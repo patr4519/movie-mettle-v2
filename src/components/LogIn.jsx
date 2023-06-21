@@ -38,7 +38,7 @@ export const LogIn = () => {
   return (
     <div className="profile">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h1>Log In</h1>
+        <h1>Sign In</h1>
         <input
           type="text"
           placeholder="Username"
@@ -51,7 +51,7 @@ export const LogIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Enter</button>
+        <button type="submit">Sign In</button>
       </form>
     </div>
   );
