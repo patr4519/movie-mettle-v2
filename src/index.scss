@@ -207,6 +207,20 @@ a {
       width: 30%;
       border-bottom-left-radius: 10px;
 
+      .favorite-container {
+        width: 164px;
+        height: 35px;
+        background-image: linear-gradient(to right, #19e11175, #8cb08e);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        font-size: 16px;
+        border-radius: 5px;
+        margin-top: 5px;
+        box-shadow: 1px 1px #888;
+      }
+
       .your-fav {
         display: flex;
         justify-content: center;
@@ -324,4 +338,3 @@ a {
     }
   }
 }
-

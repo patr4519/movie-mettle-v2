@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, selectUser } from "../features/api/userSlice";
-import { useEditUserFavMutation } from "../features/api/apiUserSlice";
+import { useEditUserFavMutation, useGetUsersQuery } from "../features/api/apiUserSlice";
 
 export const SingleFilm = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ export const SingleFilm = () => {
       <div className="single-movie">
         <div className="left-block">
           <img src={film.Poster} alt="poster" width={"100%"} />
-          {isFavorite ? <div>In your favorite</div> : <Button onClick={handleAddBtn}>Add to favorite</Button>}
+          {isFavorite ? <div className="favorite-container">In your favorites</div> : <Button onClick={handleAddBtn}>Add to favorite</Button>}
         </div>
         <div className="right-block">
           <div className="movie-title">
