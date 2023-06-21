@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 export const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -43,7 +44,9 @@ export const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Create</button>
+        <Button sx={{ height: "35px" }} type="submit">
+          Create
+        </Button>
       </form>
     </div>
   );

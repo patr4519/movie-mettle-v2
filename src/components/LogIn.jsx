@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/api/userSlice";
+import { Button } from "@mui/material";
 
 export const LogIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true)
 
   const dispatch = useDispatch();
 
@@ -51,7 +53,7 @@ export const LogIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Sign In</button>
+        <Button sx={{height: '35px'}} type="submit">Sign In</Button>
       </form>
     </div>
   );
