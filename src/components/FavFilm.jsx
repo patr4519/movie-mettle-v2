@@ -2,13 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useGetFilmQuery } from "../features/api/apiSlice";
 import { useParams } from "react-router-dom";
+import { useEditUserFavMutation } from "../features/api/apiUserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFavorite, selectUser } from "../features/api/userSlice";
 
 export const FavFilm = ({ title }) => {
+  let user = useSelector(selectUser);
   const { movieTitle } = useParams();
+  const [updateFav] = useEditUserFavMutation();
+  const dispath = useDispatch();
 
   const film = movieTitle ? movieTitle : title;
 
   const { data, error, isLoading } = useGetFilmQuery(film);
+
+  const handleRemove = async () => {
+    let newArr = user.favorites.filter((movie) => movie !== film);
+
+    try {
+      await updateFav({
+        ...user,
+        favorites: [...newArr],
+      });
+      dispath(removeFavorite(newArr));
+    } catch (error) {
+      alert("Error on delete movie");
+    }
+  };
 
   if (error) return <div>Error while fetch film</div>;
   if (isLoading) return <div>Loading...</div>;
@@ -30,7 +50,7 @@ export const FavFilm = ({ title }) => {
           <div className="country">{data.Country}</div>
           <div className="director">{data.Director}</div>
         </div>
-        <button>Remove</button>
+        <button onClick={handleRemove}>Remove</button>
       </div>
     </div>
   );
