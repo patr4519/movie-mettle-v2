@@ -28,10 +28,10 @@ export const SingleFilm = () => {
       setSaving(true);
       const done = await updateFav({
         ...user,
-        favorites: [...user.favorites, movieTitle],
+        favorites: [...user.favorites, film],
       });
       if (done) {
-        dispatch(addFavorite(movieTitle));
+        dispatch(addFavorite(film));
       }
     } catch (error) {
       alert(error);
@@ -41,8 +41,8 @@ export const SingleFilm = () => {
   };
 
   let isFavorite;
-  if (user && user.favorites.includes(movieTitle)) {
-    isFavorite = true;
+  if (user) {
+    isFavorite = user.favorites.some(obj => obj.Title === movieTitle)
   }
 
   if (isLoading) return <p>Loading...</p>;

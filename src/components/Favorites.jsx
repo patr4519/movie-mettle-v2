@@ -22,7 +22,7 @@ export const Favorites = () => {
     <div className="movie-list">
       <h2>Favorites</h2>
       {favorites.map((movie) => {
-        return <FavFilm key={movie} title={movie} />;
+        return <FavFilm key={movie.Title} title={movie.Title} />;
       })}
     </div>
   );

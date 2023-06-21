@@ -17,12 +17,12 @@ export const FavFilm = ({ title }) => {
   const { data, error, isLoading } = useGetFilmQuery(film);
 
   const handleRemove = async () => {
-    let newArr = user.favorites.filter((movie) => movie !== film);
+    let newArr = user.favorites.filter((movie) => movie.Title !== film);
 
     try {
       await updateFav({
         ...user,
-        favorites: [...newArr],
+        favorites: newArr,
       });
       dispath(removeFavorite(newArr));
     } catch (error) {
