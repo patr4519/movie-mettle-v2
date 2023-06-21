@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 export const LogIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -15,12 +15,12 @@ export const LogIn = () => {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const { data } = await axios.get(
         "https://63dbfd55c45e08a04352c66d.mockapi.io/users"
       );
 
       let user;
-
       for (let i = 0; i < data.length; i++) {
         if (data[i].login === username && data[i].password === password) {
           user = data[i];
@@ -34,6 +34,7 @@ export const LogIn = () => {
     } finally {
       setUsername("");
       setPassword("");
+      setLoading(false);
     }
   };
 
@@ -53,7 +54,9 @@ export const LogIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button sx={{height: '35px'}} type="submit">Sign In</Button>
+        <Button disabled={loading} sx={{ height: "35px" }} type="submit">
+          Sign In
+        </Button>
       </form>
     </div>
   );

@@ -5,26 +5,26 @@ import { Button } from "@mui/material";
 export const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(
-        "https://63dbfd55c45e08a04352c66d.mockapi.io/users",
-        {
-          login: username,
-          password: password,
-          created: Date.now(),
-          favorites: [],
-        }
-      );
+      setLoading(true);
+      await axios.post("https://63dbfd55c45e08a04352c66d.mockapi.io/users", {
+        login: username,
+        password: password,
+        created: Date.now(),
+        favorites: [],
+      });
       alert(`${username} was created!`);
     } catch (error) {
       alert(error);
     } finally {
       setUsername("");
       setPassword("");
+      setLoading(false);
     }
   };
 
@@ -44,7 +44,7 @@ export const SignUp = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button sx={{ height: "35px" }} type="submit">
+        <Button disabled={loading} sx={{ height: "35px" }} type="submit">
           Create
         </Button>
       </form>
