@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import EmptyFavorites from "./EmptyFavorites";
 import { selectUser } from "../features/api/userSlice";
-import { Film } from "./Film";
 import { LogIn } from "../components/LogIn";
+import { FavFilm } from "./FavFilm";
 
 export const Favorites = () => {
   const favorites = useSelector(selectUser)?.favorites;
@@ -22,7 +22,7 @@ export const Favorites = () => {
     <div className="movie-list">
       <h2>Favorites</h2>
       {favorites.map((movie) => {
-        return <Film key={movie} title={movie} />;
+        return <FavFilm key={movie} title={movie} />;
       })}
     </div>
   );
