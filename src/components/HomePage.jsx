@@ -3,12 +3,12 @@ import { Film } from "./Film";
 import { Button } from "@mui/material";
 
 const bestFilms = [
-  "The Godfather",
-  "The Mummy",
-  "The Godfather",
-  "The Godfather",
-  "The Godfather",
-  "The Godfather",
+  "Avatar",
+  "Interstellar",
+  "Avatar",
+  "Interstellar",
+  "Interstellar",
+  "Interstellar",
 ];
 
 export const HomePage = () => {

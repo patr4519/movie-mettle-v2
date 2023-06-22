@@ -63,6 +63,7 @@ export const FavFilm = ({ title }) => {
             position: "absolute",
             bottom: "0px",
             right: "0px",
+            fontSize: "13px",
           }}
           onClick={handleRemove}
           startIcon={<DeleteIcon />}
