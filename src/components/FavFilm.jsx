@@ -5,8 +5,12 @@ import { useParams } from "react-router-dom";
 import { useEditUserFavMutation } from "../features/api/apiUserSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFavorite, selectUser } from "../features/api/userSlice";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export const FavFilm = ({ title }) => {
+  const [removing, setRemoving] = React.useState(false);
+
   let user = useSelector(selectUser);
   const { movieTitle } = useParams();
   const [updateFav] = useEditUserFavMutation();
@@ -20,6 +24,7 @@ export const FavFilm = ({ title }) => {
     let newArr = user.favorites.filter((movie) => movie.Title !== film);
 
     try {
+      setRemoving(true);
       await updateFav({
         ...user,
         favorites: newArr,
@@ -27,6 +32,8 @@ export const FavFilm = ({ title }) => {
       dispath(removeFavorite(newArr));
     } catch (error) {
       alert("Error on delete movie");
+    } finally {
+      setRemoving(false);
     }
   };
 
@@ -50,7 +57,19 @@ export const FavFilm = ({ title }) => {
           <div className="country">{data.Country}</div>
           <div className="director">{data.Director}</div>
         </div>
-        <button onClick={handleRemove}>Remove</button>
+        <Button
+          sx={{
+            color: "red",
+            position: "absolute",
+            bottom: "0px",
+            right: "0px",
+          }}
+          onClick={handleRemove}
+          startIcon={<DeleteIcon />}
+          disabled={removing}
+        >
+          Remove
+        </Button>
       </div>
     </div>
   );
