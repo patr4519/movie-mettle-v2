@@ -4,6 +4,7 @@ import EmptyFavorites from "./EmptyFavorites";
 import { selectUser } from "../features/api/userSlice";
 import { LogIn } from "../components/LogIn";
 import { FavFilm } from "./FavFilm";
+import { SortSelect } from "./SortSelect";
 
 export const Favorites = () => {
   const favorites = useSelector(selectUser)?.favorites;
@@ -21,6 +22,7 @@ export const Favorites = () => {
   return (
     <div className="movie-list">
       <h2>Favorites</h2>
+      <SortSelect />
       {favorites.map((movie) => {
         return <FavFilm key={movie.Title} title={movie.Title} />;
       })}

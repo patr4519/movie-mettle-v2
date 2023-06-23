@@ -15,6 +15,9 @@ const userSlice = createSlice({
     removeFavorite: (state, action) => {
       state[0].favorites = action.payload;
     },
+    sortBy: (state, action) => {
+      console.log(action.payload);
+    },
     clearUser: () => {
       return initialState;
     },
@@ -23,7 +26,7 @@ const userSlice = createSlice({
 
 export const selectUser = (state) => state.user[0];
 
-export const { addUser, clearUser, addFavorite, removeFavorite } =
+export const { addUser, clearUser, addFavorite, removeFavorite, sortBy } =
   userSlice.actions;
 
 export default userSlice.reducer;
