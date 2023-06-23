@@ -13,7 +13,7 @@ export const SortSelect = () => {
   const dispath = useDispatch();
 
   const handleChange = (event) => {
-    setSort(event.target.value);
+    setSort(event.target.value)
     dispath(sortBy(event.target.value))
   };
 
