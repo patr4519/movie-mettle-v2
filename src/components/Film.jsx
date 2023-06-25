@@ -28,7 +28,7 @@ export const Film = ({ title }) => {
           </Link>
           <div className="details">
             <div className="title">
-              {data.Title}, {data.Year}
+              <span>{data.Title}</span>, {data.Year}
             </div>
             <div className="genre&runtime">
               {data.Genre}, {data.Runtime}
