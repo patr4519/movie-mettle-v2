@@ -69,7 +69,7 @@ export const SingleFilm = () => {
             {film.Title} ({film.Year})
           </div>
           <div className="movie-info">
-            <div className="movie-about">About film</div>
+            <div className="movie-about">About movie</div>
             <div className="movie-row">
               <div>Released</div>
               <div>{film.Released}</div>

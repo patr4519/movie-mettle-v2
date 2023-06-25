@@ -13,7 +13,7 @@ export const Favorites = () => {
   if (!user)
     return (
       <>
-        <p>LogIn or SignUp to save your favorites movies</p>
+        <p>Log in to save your favorites movies</p>
         <LogIn />
       </>
     );

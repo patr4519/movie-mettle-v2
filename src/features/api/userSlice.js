@@ -20,8 +20,8 @@ const userSlice = createSlice({
       state[0].favorites = action.payload;
     },
     sortBy: (state, action) => {
-      if (action.payload === 'order') {
-        state[0].favorites.sort(sortByOrder)
+      if (action.payload === "order") {
+        state[0].favorites.sort(sortByOrder);
       }
       if (action.payload === "title") {
         state[0].favorites.sort(sortByTitle);
