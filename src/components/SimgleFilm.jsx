@@ -4,10 +4,7 @@ import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, selectUser } from "../features/api/userSlice";
-import {
-  useEditUserFavMutation,
-  useGetUsersQuery,
-} from "../features/api/apiUserSlice";
+import { useEditUserFavMutation } from "../features/api/apiUserSlice";
 import { getMovieId } from "../functions/getMovieId";
 
 export const SingleFilm = () => {
@@ -31,11 +28,23 @@ export const SingleFilm = () => {
         ...user,
         favorites: [
           ...user.favorites,
-          { id: getMovieId(user.favorites), ...film },
+          {
+            id: getMovieId(user.favorites),
+            Title: film.Title,
+            Runtime: film.Runtime,
+            Released: film.Released,
+          },
         ],
       });
       if (done) {
-        dispatch(addFavorite({ id: getMovieId(user.favorites), ...film }));
+        dispatch(
+          addFavorite({
+            id: getMovieId(user.favorites),
+            Title: film.Title,
+            Runtime: film.Runtime,
+            Released: film.Released,
+          })
+        );
       }
     } catch (error) {
       alert(error);
