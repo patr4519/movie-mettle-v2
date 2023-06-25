@@ -5,10 +5,20 @@ import { selectUser } from "../features/api/userSlice";
 import { LogIn } from "../components/LogIn";
 import { FavFilm } from "./FavFilm";
 import { SortSelect } from "./SortSelect";
+import Pagination from "@mui/material/Pagination";
 
 export const Favorites = () => {
+  const [page, setPage] = React.useState(1);
+
   const favorites = useSelector(selectUser)?.favorites;
   const user = useSelector(selectUser);
+
+  const changePag = (event, value) => {
+    setPage(value);
+  };
+
+  const startIndex = (page - 1) * 3;
+  const displayedFavorites = favorites.slice(startIndex, startIndex + 3);
 
   if (!user)
     return (
@@ -23,9 +33,15 @@ export const Favorites = () => {
     <div className="movie-list">
       <h2>Favorites</h2>
       <SortSelect />
-      {favorites.map((movie) => {
+      {displayedFavorites.map((movie) => {
         return <FavFilm key={movie.Title} title={movie.Title} />;
       })}
+      <Pagination
+        className="fav-pagination"
+        count={Math.ceil(favorites.length / 3)}
+        page={page}
+        onChange={changePag}
+      />
     </div>
   );
 };
