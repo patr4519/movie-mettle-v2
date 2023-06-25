@@ -17,8 +17,8 @@ export const Favorites = () => {
     setPage(value);
   };
 
-  const startIndex = (page - 1) * 3;
-  const displayedFavorites = favorites.slice(startIndex, startIndex + 3);
+  const startIndex = (page - 1) * 5;
+  const displayedFavorites = favorites.slice(startIndex, startIndex + 5);
 
   if (!user)
     return (
@@ -36,12 +36,14 @@ export const Favorites = () => {
       {displayedFavorites.map((movie) => {
         return <FavFilm key={movie.Title} title={movie.Title} />;
       })}
-      <Pagination
-        className="fav-pagination"
-        count={Math.ceil(favorites.length / 3)}
-        page={page}
-        onChange={changePag}
-      />
+      {favorites.length > 5 && (
+        <Pagination
+          className="fav-pagination"
+          count={Math.ceil(favorites.length / 5)}
+          page={page}
+          onChange={changePag}
+        />
+      )}
     </div>
   );
 };
