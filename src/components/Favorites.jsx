@@ -30,12 +30,14 @@ export const Favorites = () => {
   if (!favorites.length) return <EmptyFavorites />;
 
   return (
-    <div className="movie-list">
-      <h2>Favorites</h2>
-      <SortSelect />
-      {displayedFavorites.map((movie) => {
-        return <FavFilm key={movie.Title} title={movie.Title} />;
-      })}
+    <>
+      <div className="movie-list">
+        <h2>Favorites</h2>
+        <SortSelect />
+        {displayedFavorites.map((movie) => {
+          return <FavFilm key={movie.Title} title={movie.Title} />;
+        })}
+      </div>
       {favorites.length > 5 && (
         <Pagination
           className="fav-pagination"
@@ -44,6 +46,6 @@ export const Favorites = () => {
           onChange={changePag}
         />
       )}
-    </div>
+    </>
   );
 };
