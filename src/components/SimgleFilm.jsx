@@ -8,6 +8,7 @@ import {
   useEditUserFavMutation,
   useGetUsersQuery,
 } from "../features/api/apiUserSlice";
+import { getMovieId } from "../functions/getMovieId";
 
 export const SingleFilm = () => {
   let user = useSelector(selectUser);
@@ -28,10 +29,13 @@ export const SingleFilm = () => {
       setSaving(true);
       const done = await updateFav({
         ...user,
-        favorites: [...user.favorites, film],
+        favorites: [
+          ...user.favorites,
+          { id: getMovieId(user.favorites), ...film },
+        ],
       });
       if (done) {
-        dispatch(addFavorite(film));
+        dispatch(addFavorite({ id: getMovieId(user.favorites), ...film }));
       }
     } catch (error) {
       alert(error);
@@ -42,7 +46,7 @@ export const SingleFilm = () => {
 
   let isFavorite;
   if (user) {
-    isFavorite = user.favorites.some(obj => obj.Title === movieTitle)
+    isFavorite = user.favorites.some((obj) => obj.Title === movieTitle);
   }
 
   if (isLoading) return <p>Loading...</p>;

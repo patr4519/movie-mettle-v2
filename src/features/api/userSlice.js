@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { sortByTitle } from "../../functions/sortByTitle";
 import { sortByDuration } from "../../functions/sortByDuration";
 import { sortByDate } from "../../functions/sortByDate";
+import { sortByOrder } from "../../functions/sortByOrder";
 
 const initialState = [];
 
@@ -19,6 +20,9 @@ const userSlice = createSlice({
       state[0].favorites = action.payload;
     },
     sortBy: (state, action) => {
+      if (action.payload === 'order') {
+        state[0].favorites.sort(sortByOrder)
+      }
       if (action.payload === "title") {
         state[0].favorites.sort(sortByTitle);
       }
