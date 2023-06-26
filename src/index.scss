@@ -351,3 +351,27 @@ a {
   display: flex;
   justify-content: center;
 }
+
+.autorize-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+
+  h2 {
+    margin: 15px 0;
+  }
+
+  div:last-child {
+    margin-top: 10px;
+    font-size: 14px;
+
+    span {
+      color: #1976d2;
+      cursor: pointer;
+    }
+  }
+}

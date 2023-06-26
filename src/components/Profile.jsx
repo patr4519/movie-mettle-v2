@@ -4,16 +4,16 @@ import { LogIn } from "./LogIn";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/api/userSlice";
 import UserProfile from "./UserProfile";
+import { AuthorizationForm } from "./AuthorizationBlock";
 
 const Profile = () => {
   const user = useSelector(selectUser);
 
-  if (user) return (<UserProfile user={user}/>)
+  if (user) return <UserProfile user={user} />;
 
   return (
     <div className="profile">
-      <SignUp />
-      <LogIn />
+      <AuthorizationForm />
     </div>
   );
 };
